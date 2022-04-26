@@ -1,2 +1,2 @@
 # leetcode
-my leetcode practice
+my leetcode practice log
