@@ -30,6 +30,7 @@
 var maxCount = function (m, n, ops) {
 	if (!ops.length) return m * n;
 
+  // 每次操作都从（0，0）开始，求重叠部分
 	for (const val of ops) {
 		// 行，取最小值
 		m = Math.min(m, val[0]);
