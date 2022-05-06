@@ -55,7 +55,7 @@
  * @return {number}
  */
 var maxRotateFunction = function (nums) {
-	let F0 = 0,
+	let fn = 0,
 		sum = 0,
 		ans = 0,
 		n = nums.length;
@@ -63,15 +63,15 @@ var maxRotateFunction = function (nums) {
     // 求和
 		sum += nums[i];
 		// 计算 F(0)
-		F0 += nums[i] * i;
+		fn += nums[i] * i;
 	}
 
-	ans = F0;
+	ans = fn;
   // 已知 F0， 从 F1 开始遍历
 	for (let i = 1; i < n; i++) {
 		// F(i) = F(i-1) + sum - n * nums[n-i]
-		F0 = F0 + sum - n * nums[n - i];
-		ans = Math.max(ans, F0);
+		fn = fn + sum - n * nums[n - i];
+		ans = Math.max(ans, fn);
 	}
 
 	return ans;
