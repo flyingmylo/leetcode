@@ -17,6 +17,7 @@ var twoSum = function (nums, target) {
     if (map.has(s)) {
       return [map.get(s), i];
     } else {
+      // 如果不存在，则添加到map中, 把下标存为值
       map.set(nums[i], i);
     }
   }
