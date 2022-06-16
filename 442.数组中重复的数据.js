@@ -37,18 +37,25 @@
  * （索引从 0 开始，最小值为 1， 所以减去 1）
  * 如果值为正数，就原地修改该索引对应的值为负数
  * 如果值为负数，说明已经出现过，即重复的数字
- *  */ 
+ *  */
+//  哈希表
 var findDuplicates = function (nums) {
-  const twins = [];
+  const ans = []
+
   for (let i = 0; i < nums.length; i++) {
-    let index = Math.abs(nums[i]) - 1;
-    if (nums[index] < 0) {
-      twins.push(Math.abs(nums[i]));
+    let absKey = Math.abs(nums[i]);
+    // 所有整数都在 [1, n] 的范围内，所以可以将元素当成数组的下标
+    // length 从 0 开始，所以减 1
+    if (nums[absKey - 1] > 0) {
+      // 把数组中的元素变成负数，标记为负代表已经出现过
+      nums[absKey - 1] *= -1
     } else {
-      nums[index] = -nums[index];
+      // 重复的元素
+      ans.push(absKey)
     }
   }
-  return twins;
+
+  return ans;
 };
 
 // @lc code=end
