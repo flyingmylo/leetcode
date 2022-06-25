@@ -20,15 +20,17 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var moveZeroes = function (nums) {
-  // 双指针
+	// 双指针
 	let key = 0;
 
 	for (let i = 0; i < nums.length; i++) {
 		if (nums[i] !== 0) {
+			// 把非 0 的值移动到前边，同时记录非 0 的开始下标
 			nums[key++] = nums[i];
 		}
 	}
 
+	// 遍历把非 0 开始之后的位数变成 0
 	for (let j = key; j < nums.length; j++) {
 		nums[j] = 0;
 	}
