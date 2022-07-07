@@ -68,21 +68,35 @@
  * @return {number[]}
  */
 var postorder = function (root) {
-	const ans = []
+	if (root === null) return []
+  
+	const ans = [],
+		stack = [root]
 
-	// 递归版
-	const traverse = (root) => {
-		if (!root) return
+	// 迭代版 先进后出
+	while (stack.length) {
+		// 取出栈顶元素
+		const cur = stack.pop()
+		// 如果当前元素不为空，则将其子节点入栈
+		stack.push(...cur.children)
 
-		for (const children of root.children) {
-			traverse(children)
-		}
-
-		ans.push(root.val)
+		// 将当前元素放入 ans
+		ans.unshift(cur.val)
 	}
-
-	traverse(root)
-
 	return ans
+	// 递归版
+	// const traverse = (root) => {
+	// 	if (!root) return
+
+	// 	for (const children of root.children) {
+	// 		traverse(children)
+	// 	}
+
+	// 	ans.push(root.val)
+	// }
+
+	// traverse(root)
+
+	// return ans
 }
 // @lc code=end
