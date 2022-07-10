@@ -62,8 +62,26 @@
  * @param {number} val
  * @return {TreeNode}
  */
-var searchBST = function(root, val) {
+// var searchBST = function (root, val) {
+//   // 递归版
+//   if (!root) return null
+//   if (root.val === val) return root
 
-};
+//   return root.val > val ? searchBST(root.left, val) : searchBST(root.right, val)
+// };
+
+// 迭代版
+var searchBST = function (root, val) {
+  if (!root) return null
+
+  while (root) {
+    if (root.val === val) return root
+    else if (root.val > val) root = root.left
+    else root = root.right
+  }
+
+  // 搜索不到时返回 null
+  return null
+}
 // @lc code=end
 
